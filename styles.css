@@ -120,6 +120,7 @@ body {
 }
 .task img {
     filter: invert(1);
+    cursor: pointer;
 }
 .task:hover img{
     filter: none;
@@ -145,6 +146,7 @@ body {
     /* transform: translateY(-0.075em); */
     display: grid;
     place-content: center;
+    cursor: pointer;
 }
 .task input::before {
     content: "";
@@ -178,6 +180,13 @@ body {
     align-items: center;
     width: 25%;
 }
+.filter > p {
+    cursor: pointer;
+}
 .filter > p:hover {
     color: black;
+}
+
+.strike {
+    text-decoration: line-through;
 }
