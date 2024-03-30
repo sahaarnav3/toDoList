@@ -69,3 +69,25 @@ body {
 .add-btn:active {
     scale: 1.1;
 }
+
+.complete-clear {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+    border-bottom: 1.5px solid rgb(203, 203, 203);
+    font-size: 15px;
+    color: grey;
+    font-weight: 400;
+}
+.complete-clear *:hover {
+    color: black;
+}
+.complete-clear div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.tick {
+    filter: invert(0.8);
+    margin-right: 10px;
+}
