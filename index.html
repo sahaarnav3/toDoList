@@ -25,14 +25,34 @@
         </div>
         <div class="complete-clear">
             <div>
-                <img class="tick" src="https://cdn.hugeicons.com/icons/tick-double-02-solid-rounded.svg" alt="tick-double-02"
-                    width="25" height="25">
+                <img class="tick" src="https://cdn.hugeicons.com/icons/tick-double-02-solid-rounded.svg"
+                    alt="tick-double-02" width="25" height="25">
                 <p>Complete all tasks</p>
             </div>
             <p>Clear Completed</p>
         </div>
-        <div class="tasklist-box"></div>
-        <div class="task-details"></div>
+        <div class="tasklist-box">
+            <div class="task">
+                <input type="checkbox" name="checkbox">
+                <p>some task 1</p>
+                <img src="https://cdn.hugeicons.com/icons/remove-circle-half-dot-stroke-rounded.svg"
+                    alt="remove-circle-half-dot" width="28" height="28" />
+            </div>
+            <div class="task">
+                <input type="checkbox" name="checkbox" checked>
+                <p>some task 1</p>
+                <img src="https://cdn.hugeicons.com/icons/remove-circle-half-dot-stroke-rounded.svg"
+                    alt="remove-circle-half-dot" width="28" height="28" />
+            </div>
+        </div>
+        <div class="task-details">
+            <div><p><span id="task-num">#3</span> tasks left</p></div>
+            <div class="filter">
+                <p id="all">All</p>
+                <p id="incomplete">Incomplete</p>
+                <p id="completed">Completed</p>
+            </div>
+        </div>
     </div>
 
 
