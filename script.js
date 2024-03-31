@@ -31,34 +31,6 @@ const deleteTaskHandler = (e) => {
     console.log(allTasks, incomplete);
 }
 
-
-// This function is used to handle the add task button function 
-const insertTask = () => {
-    let idKeys = Object.keys(allTasks);
-    document.querySelector(".tasklist-box").innerHTML = "";
-    idKeys.forEach((num) => {
-        document.querySelector(".tasklist-box").innerHTML +=
-            `
-        <div class="task" id="task-${num}">
-            <input type="checkbox" name="checkbox">
-            <p>${allTasks[num]}</p>
-            <img class="delete-task" src="https://cdn.hugeicons.com/icons/remove-circle-half-dot-stroke-rounded.svg"
-                alt="remove-circle-half-dot" width="28" height="28" />
-        </div>
-        `
-    });
-    document.querySelectorAll(".task input").forEach((elem) => {
-        elem.addEventListener("click", (e) => {
-            checkBoxHandler(e);
-        })
-    });
-    document.querySelectorAll(".task img").forEach((elem) => {
-        elem.addEventListener("click", (e) => {
-            deleteTaskHandler(e);
-        })
-    });
-}
-
 //To get the current task typed in the input text box and populate it in the global allTasks array.
 const getTask = () => {
     let currTask = document.querySelector(".task-input");
@@ -66,10 +38,11 @@ const getTask = () => {
     incomplete[idCounter] = currTask.value.trim(); // initally all tasks are incomplete so adding them in this array.
     idCounter++;
     currTask.value = "";
-    insertTask();
+    renderTasks(1);
 }
 
 //Creating this render function to show the tasks according to the buttons pressed (All, Incomplete, Complete)
+//Using default value 1 so it is in insert task mode in the beginning..
 const renderTasks = (value = 1) => {
     let idKeys = Object.keys(allTasks);
     let completedTaskKeys = Object.keys(completed);
@@ -114,6 +87,16 @@ const renderTasks = (value = 1) => {
             `
         })
     }
+    document.querySelectorAll(".task input").forEach((elem) => {
+        elem.addEventListener("click", (e) => {
+            checkBoxHandler(e);
+        })
+    });
+    document.querySelectorAll(".task img").forEach((elem) => {
+        elem.addEventListener("click", (e) => {
+            deleteTaskHandler(e);
+        })
+    });
 }
 
 document.querySelector(".add-btn").addEventListener("click", getTask);
