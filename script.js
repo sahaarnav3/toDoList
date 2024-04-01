@@ -4,6 +4,7 @@ let completedTasks = {}; // global object array that will contain only the compl
 let incompleteTasks = {}; // global object array that will contain only the incompleted tasks
 let completeAllTask = false; // using this variable to track the active and non active status of complete-all-tasks button;
 
+
 //below function is used to check at all times if there any tasks present in allTask array or now, if none present then all the- 
 // -things below input box will be hidden...
 const showAllHandler = () => {
@@ -45,6 +46,10 @@ const deleteTaskHandler = (e) => {
 //To get the current task typed in the input text box and populate it in the global allTasks array.
 const getTask = () => {
     let currTask = document.querySelector(".task-input");
+    if(currTask.value === null || currTask.value.trim() === ""){
+        alert("Please enter a task..");
+        return;
+    }
     allTasks[idCounter] = currTask.value.trim();
     incompleteTasks[idCounter] = currTask.value.trim(); // initally all tasks are incomplete so adding them in this array.
     idCounter++;
@@ -140,7 +145,7 @@ const completeAllTaskHandler = () => {
         document.querySelector(".tick").style.filter = "invert(0)"
     } else {
         allTaskKeys.forEach((key) => {
-            incompleteTasks[key] = allTasks[key];    
+            incompleteTasks[key] = allTasks[key];
             delete completedTasks[key];
         });
         completeAllTask = false;
@@ -164,6 +169,31 @@ const clearCompletedHandler = () => {
 //Task Number updater
 const taskNumberUpdater = () => {
     document.getElementById("task-num").innerHTML = `#${Object.keys(incompleteTasks).length}`;
+    createLocalStorage();
+}
+
+//Below function I am using to create a local storage of all the arrays, so that I can reuse the previous data when I relaunch the app.
+const createLocalStorage = () => {
+    let data = { idCounter, allTasks, completedTasks, incompleteTasks, completeAllTask };
+    localStorage.setItem("data", JSON.stringify(data));
+}
+
+//Below function is used to restore the values from previous session if present.
+const fetchLocalStorage = () => {
+    let data = JSON.parse(localStorage.getItem("data")) || null;
+    if(data === null)
+        return;
+    idCounter = data.idCounter;
+    allTasks = data.allTasks;
+    completedTasks = data.completedTasks;
+    incompleteTasks = data.incompleteTasks;
+    completeAllTask = data.completeAllTask;
+    showAllHandler();
+    renderTasks();
+}
+
+const deleteLocalStorage = () => {
+    localStorage.clear();
 }
 
 document.querySelector(".add-btn").addEventListener("click", getTask);
@@ -186,3 +216,4 @@ document.getElementById("completed").addEventListener("click", (e) => {
 });
 document.querySelector(".complete-task-btn").addEventListener("click", completeAllTaskHandler);
 document.querySelector(".clear-completed-btn").addEventListener("click", clearCompletedHandler);
+fetchLocalStorage();
