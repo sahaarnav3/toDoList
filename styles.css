@@ -201,3 +201,68 @@ body {
 .hidden {
     display: none;
 }
+
+@media (max-width: 1400px) {
+    .main-container, .heading {
+        width: 90%;
+    }
+}
+@media (max-width: 900px) {
+    .filter {
+        width: 30%;
+    }
+}
+@media (max-width: 800px) {
+    .filter {
+        width: 35%;
+    }
+}
+@media (max-width: 700px) {
+    .filter {
+        width: 40%;
+    }
+}
+@media (max-width: 600px) {
+    .filter {
+        width: 46%;
+    }
+}
+@media (max-width: 500px) {
+    .filter {
+        width: 62%;
+    }
+    .heading {
+        text-align: center;
+        font-size: 10px;
+    }
+}
+@media (max-width: 400px) {
+    .filter {
+        flex-direction: column;
+        width: 35%;
+        /* line-height: 25px; */
+        gap: 10px;
+    }
+    .clear-completed-btn {
+        width: 100px;
+        text-align: center;
+    }
+    .complete-task-btn p {
+        width: 110px;
+        text-align: center;
+    }
+}
+@media (max-width: 300px) {
+    .complete-clear{
+        font-size: 12px;
+        padding: 10px 2px;
+    }
+    .complete-task-btn  {
+        width: 110px;
+        text-align: center;
+    }
+    .clear-completed-btn {
+        width: 70px;
+        text-align: center;
+    }
+}

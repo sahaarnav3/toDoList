@@ -27,6 +27,7 @@ const checkBoxHandler = (e) => {
         incompleteTasks[taskId] = parent.querySelector("p").textContent;
         parent.querySelector("p").classList.remove("strike");
     }
+    taskNumberUpdater();
 }
 
 //Similarly this function will be called to handle event when the delete button is pressed.
@@ -38,6 +39,7 @@ const deleteTaskHandler = (e) => {
     delete completedTasks[taskId];
     delete incompleteTasks[taskId];
     showAllHandler();
+    taskNumberUpdater();
 }
 
 //To get the current task typed in the input text box and populate it in the global allTasks array.
@@ -161,7 +163,6 @@ const clearCompletedHandler = () => {
 
 //Task Number updater
 const taskNumberUpdater = () => {
-    // console.log(document.getElementById("task-num").innerHTML);
     document.getElementById("task-num").innerHTML = `#${Object.keys(incompleteTasks).length}`;
 }
 
