@@ -79,7 +79,7 @@ const renderTasks = (value = 1) => {
                 `
                 <div class="task" id="task-${num}">
                     <input type="checkbox" name="checkbox" ${completeTrue ? "checked" : ""}>
-                    <p class="${completeTrue ? "strike" : ""}">${allTasks[num]}</p>
+                    <p ${completeTrue ? "class=strike" : ""}>${allTasks[num]}</p>
                     <img class="delete-task" src="https://cdn.hugeicons.com/icons/remove-circle-half-dot-stroke-rounded.svg"
                         alt="remove-circle-half-dot" width="28" height="28" />
                 </div>
